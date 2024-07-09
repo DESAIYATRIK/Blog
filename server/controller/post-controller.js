@@ -18,14 +18,14 @@ export const updatePost = async (request, response) => {
         const post = await Post.findById(request.params.id);
 
         if (!post) {
-            response.status(404).json({ msg: 'Post not found' })
+            return response.status(404).json({ msg: 'Post not found' });
         }
         
-        await Post.findByIdAndUpdate( request.params.id, { $set: request.body })
+        const updatedPost = await Post.findByIdAndUpdate(request.params.id, { $set: request.body }, { new: true });
 
-        response.status(200).json('post updated successfully');
+        response.status(200).json(updatedPost);
     } catch (error) {
-        response.status(500).json(error);
+        response.status(500).json({ error: 'Internal server error', message: error.message });
     }
 }
 

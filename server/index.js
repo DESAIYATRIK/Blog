@@ -10,15 +10,17 @@ import Router from './routes/route.js';
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 8000;
+const username = process.env.DB_USERNAME;
+const password = process.env.DB_PASSWORD;
 
+// Middleware
 app.use(cors());
 app.options('*', cors()); // Preflight all routes
-
-// Ensure bodyParser is correctly set up
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Middleware to handle CORS headers and methods
+// Custom CORS headers
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
@@ -26,12 +28,11 @@ app.use((req, res, next) => {
     next();
 });
 
+// Routes
 app.use('/', Router);
 
-const PORT = 8000;
-const username = process.env.DB_USERNAME;
-const password = process.env.DB_PASSWORD;
-
+// Database connection
 Connection(username, password);
 
+// Start server
 app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
