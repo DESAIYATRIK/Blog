@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Box } from '@mui/material';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
-
+import ErrorBoundary from './ErrorBoundary';
 //components
 import DataProvider from './context/DataProvider';
 import Header from './components/header/Header';
@@ -28,6 +28,7 @@ function App() {
   const [isAuthenticated, isUserAuthenticated] = useState(false);
 
   return (
+    <ErrorBoundary>
     <DataProvider>
       <BrowserRouter>
         <Box style={{ marginTop: 64 }}>
@@ -61,6 +62,7 @@ function App() {
         </Box>
       </BrowserRouter>
     </DataProvider>
+    </ErrorBoundary>
   );
 }
 
