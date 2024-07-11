@@ -1,6 +1,4 @@
-
-import { Box, styled, Typography, Link } from '@mui/material';
-import { GitHub, Instagram, Email } from '@mui/icons-material';
+import { Box, styled, Typography } from '@mui/material';
 
 const Banner = styled(Box)`
     background-image: url(https://www.wallpapertip.com/wmimgs/23-236943_us-wallpaper-for-website.jpg);
@@ -27,25 +25,18 @@ const About = () => {
         <Box>
             <Banner/>
             <Wrapper>
-                <Typography variant="h3">Yatrik Desai</Typography>
-                <Text variant="h5">I'm a Software Engineer based in India. 
-                    I've built websites, desktop applications and corporate software.<br />
-                    If you are interested, you can view some of my favorite projects here
-                    <Box component="span" style={{ marginLeft: 5 }}>
-                        <Link href="https://github.com/DESAIYATRIK" color="inherit" target="_blank"><GitHub /></Link>
-                    </Box>
-                </Text>
+                <Typography variant="h3">About Our Platform</Typography>
                 <Text variant="h5">
-                    Need something built or simply want to have chat? Reach out to me on
-                    <Box component="span" style={{ marginLeft: 5 }}>
-                        <Link href="https://www.instagram.com/yatrikdesai/" color="inherit" target="_blank">
-                            <Instagram />
-                        </Link>
-                    </Box>  
-                        or send me an Email 
-                        <Link href="mailto:yatrikdesai@gmail.com?Subject=This is a subject" target="_blank" color="inherit">
-                            <Email />
-                        </Link>.
+                    Welcome to our comprehensive blogging platform. Here are some of the key features you can enjoy:
+                    <ul>
+                        <li>Create blogs effortlessly with our user-friendly editor.</li>
+                        <li>Update your existing blogs to keep your content fresh and relevant.</li>
+                        <li>Delete blogs that are no longer needed or relevant.</li>
+                        <li>Engage with readers through comments on blogs.</li>
+                        <li>Maintain quality discussions by deleting inappropriate comments.</li>
+                        <li>Enjoy a seamless and responsive design that works well on both desktop and mobile devices.</li>
+                        <li>Benefit from real-time updates and notifications to keep you informed about the latest activities.</li>
+                    </ul>
                 </Text>
             </Wrapper>
         </Box>

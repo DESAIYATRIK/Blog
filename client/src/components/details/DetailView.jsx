@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Box, Typography, styled } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -78,6 +78,17 @@ const DetailView = () => {
         }
     }
 
+    const updatePostDate = async () => {
+        try {
+            const updatedPost = { ...post, createdDate: new Date() }; 
+            await API.updatePostDate(post._id, updatedPost.createdDate);
+            setPost(updatedPost);
+        } catch (error) {
+            console.error('Error while updating the post date', error);
+            
+        }
+    }
+
     return (
         <Container>
             <Image src={post.picture || url} alt="post" />
@@ -85,7 +96,7 @@ const DetailView = () => {
                 {   
                     account.username === post.username && 
                     <>  
-                        <Link to={`/update/${post._id}`}><EditIcon color="primary" /></Link>
+                        <Link to={`/update/${post._id}`} onClick={updatePostDate}><EditIcon color="primary" /></Link>
                         <DeleteIcon onClick={deleteBlog} color="error" />
                     </>
                 }
